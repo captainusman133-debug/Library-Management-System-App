@@ -20,7 +20,7 @@ const addBook = async (req, res) => {
 // GET
 const getAllBooks = async (req, res) => {
     try {
-        const books = await Book.find();
+        const books = await Book.find().populate("category");
 
         res.status(200).json({
             success: true,

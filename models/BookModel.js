@@ -17,8 +17,14 @@ const bookSchema = new mongoose.Schema (
             unique: true
         },
         category: {
-            type: String,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Category",
             required: true
+        },
+        quantity: {
+            type: Number,
+            required: true,
+            min: 0
         },
         availableCopies :{
             type: Number,
