@@ -10,6 +10,7 @@ const categoryRoutes = require("./routes/categoryRoutes");
 const userRoutes = require("./routes/userRoutes"); 
 const libraryRecordRoutes = require("./routes/libraryRecordRoutes");
 
+console.log(`PORT=${PORT}; MONGODB_URI set=${!!process.env.MONGODB_URI}; MONGO_URI set=${!!process.env.MONGO_URI}`);
 connectDB();
 app.use(express.json());
 app.use("/books", bookRoutes);
