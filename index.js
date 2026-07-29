@@ -11,7 +11,7 @@ const userRoutes = require("./routes/userRoutes");
 const libraryRecordRoutes = require("./routes/libraryRecordRoutes");
 
 console.log(`PORT=${PORT}; MONGODB_URI set=${!!process.env.MONGODB_URI}; MONGO_URI set=${!!process.env.MONGO_URI}`);
-connectDB();
+
 app.use(express.json());
 app.use("/books", bookRoutes);
 app.use("/categories", categoryRoutes);
@@ -20,9 +20,11 @@ app.use("/users", userRoutes);
 app.use("/library", libraryRecordRoutes);
 app.use("/dashboard", dashboardRoutes);
 
+const startServer = async () => {
+    await connectDB();
+    app.listen(PORT, () => {
+        console.log(`server is running on port ${PORT}`);
+    });
+};
 
-
-//starting the server (listen after routes)
-app.listen(PORT, () => {
-    console.log(`server is running on port ${PORT}`);
-});
+startServer();
