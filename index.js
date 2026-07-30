@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const path = require("path");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const express = require("express");
 const connectDB = require("./config/db");
@@ -13,12 +14,20 @@ const libraryRecordRoutes = require("./routes/libraryRecordRoutes");
 console.log(`PORT=${PORT}; MONGODB_URI set=${!!process.env.MONGODB_URI}; MONGO_URI set=${!!process.env.MONGO_URI}`);
 
 app.use(express.json());
-app.use("/books", bookRoutes);
-app.use("/categories", categoryRoutes);
-app.use("/library-records", libraryRecordRoutes);
-app.use("/users", userRoutes);
-app.use("/library", libraryRecordRoutes);
-app.use("/dashboard", dashboardRoutes);
+app.use("/api/books", bookRoutes);
+app.use("/api/categories", categoryRoutes);
+app.use("/api/library-records", libraryRecordRoutes);
+app.use("/api/library", libraryRecordRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/dashboard", dashboardRoutes);
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client", "build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+}
 
 const startServer = async () => {
     await connectDB();
@@ -26,5 +35,3 @@ const startServer = async () => {
         console.log(`server is running on port ${PORT}`);
     });
 };
-
-startServer();
