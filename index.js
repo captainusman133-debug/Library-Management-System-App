@@ -3,6 +3,7 @@ require("dotenv").config();
 const path = require("path");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const express = require("express");
+const cors = require("cors");
 const connectDB = require("./config/db");
 const bookRoutes = require("./routes/bookRoutes");
 const app = express();
@@ -14,6 +15,7 @@ const libraryRecordRoutes = require("./routes/libraryRecordRoutes");
 console.log(`PORT=${PORT}; MONGODB_URI set=${!!process.env.MONGODB_URI}; MONGO_URI set=${!!process.env.MONGO_URI}`);
 
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:3000" }));
 app.use("/api/books", bookRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/library-records", libraryRecordRoutes);
@@ -35,3 +37,6 @@ const startServer = async () => {
         console.log(`server is running on port ${PORT}`);
     });
 };
+
+// Start the server
+startServer();

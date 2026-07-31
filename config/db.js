@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 
 const connectDB = async () => {
-    const uri = process.env.MONGODB_URI || process.env.MONGO_URI;
+    // Prefer local MONGO_URI during development to avoid accidental Atlas auth issues.
+    const uri = process.env.NODE_ENV === 'production'
+        ? process.env.MONGODB_URI || process.env.MONGO_URI
+        : process.env.MONGO_URI || process.env.MONGODB_URI;
 
     if (!uri) {
         console.error("❌ Database Connection Error: MongoDB URI is not defined.");
