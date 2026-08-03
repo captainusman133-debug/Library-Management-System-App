@@ -15,7 +15,7 @@ const libraryRecordRoutes = require("./routes/libraryRecordRoutes");
 console.log(`PORT=${PORT}; MONGODB_URI set=${!!process.env.MONGODB_URI}; MONGO_URI set=${!!process.env.MONGO_URI}`);
 
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000" }));
+app.use(cors());
 app.use("/api/books", bookRoutes);
 app.use("/api/categories", categoryRoutes);
 app.use("/api/library-records", libraryRecordRoutes);
