@@ -78,6 +78,79 @@ th {
   margin-bottom: 16px;
 }
 
+.success {
+  color: #047857;
+  margin-bottom: 16px;
+}
+
+.book-form {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.book-form .form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.book-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.book-form input,
+.book-form select {
+  border: 1px solid #cbd5e1;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  background: white;
+}
+
+.book-form .form-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.book-form button {
+  cursor: pointer;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 18px;
+  font-size: 0.95rem;
+  background: #2563eb;
+  color: white;
+}
+
+.book-form button.secondary {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.action-button {
+  margin-right: 8px;
+  padding: 8px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: white;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+.action-button.delete {
+  border-color: #f87171;
+  color: #b91c1c;
+}
+
 .loading {
   color: #475569;
 }
