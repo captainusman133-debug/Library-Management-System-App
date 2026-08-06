@@ -1,4 +1,4 @@
-const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:5000/api';
+const API_BASE = process.env.REACT_APP_API_BASE || 'https://library-management-system-app-production-cc36.up.railway.app/api';
 
 async function fetchJson(path) {
   const url = `${API_BASE}${path}`;
