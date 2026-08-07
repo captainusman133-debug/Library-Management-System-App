@@ -62,6 +62,20 @@ export async function addUser(user) {
   });
 }
 
+export async function updateUser(id, user) {
+  return fetchJson(`/users/${id}`, {
+    method: 'PUT',
+    headers: defaultHeaders,
+    body: JSON.stringify(user),
+  });
+}
+
+export async function deleteUser(id) {
+  return fetchJson(`/users/${id}`, {
+    method: 'DELETE',
+  });
+}
+
 export async function getCategories() {
   return fetchJson('/categories');
 }
@@ -71,5 +85,19 @@ export async function addCategory(category) {
     method: 'POST',
     headers: defaultHeaders,
     body: JSON.stringify(category),
+  });
+}
+
+export async function updateCategory(id, category) {
+  return fetchJson(`/categories/${id}`, {
+    method: 'PUT',
+    headers: defaultHeaders,
+    body: JSON.stringify(category),
+  });
+}
+
+export async function deleteCategory(id) {
+  return fetchJson(`/categories/${id}`, {
+    method: 'DELETE',
   });
 }
