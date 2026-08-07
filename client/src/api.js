@@ -24,6 +24,26 @@ export async function getDashboard() {
   return fetchJson('/dashboard');
 }
 
+export async function getBorrowHistory() {
+  return fetchJson('/library-records');
+}
+
+export async function borrowBook(payload) {
+  return fetchJson('/library-records/borrow', {
+    method: 'POST',
+    headers: defaultHeaders,
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function returnBook(recordId) {
+  return fetchJson('/library-records/return', {
+    method: 'POST',
+    headers: defaultHeaders,
+    body: JSON.stringify({ recordId }),
+  });
+}
+
 export async function getBooks() {
   return fetchJson('/books');
 }
